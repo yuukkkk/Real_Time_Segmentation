@@ -100,9 +100,9 @@ def main(args):
 
     # --- Optimizers ---
     # --- THIS IS THE KEY CHANGE ---
-    print("Using Adam optimizer for both Generator and Discriminator.")
-    optimizer_G = optim.Adam(generator.parameters(), lr=args.lr_g, betas=(0.9, 0.99))
-    optimizer_D = optim.Adam(discriminator.parameters(), lr=args.lr_d, betas=(0.9, 0.99))
+    print("Using SGD optimizer for both Generator and Discriminator.")
+    optimizer_G = optim.SGD(generator.parameters(), lr=args.lr_g, momentum=0.9, weight_decay=5e-4)
+    optimizer_D = optim.SGD(discriminator.parameters(), lr=args.lr_d, momentum=0.9, weight_decay=5e-4)
     # --- END OF KEY CHANGE ---
 
     # --- Losses (same as before) ---
